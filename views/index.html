@@ -40,49 +40,46 @@
 
 </head>
 
-  <body>
-     <div class="site-wrapper">
-      <div class="site-wrapper-inner">
-        <div class="cover-container">
-          <div class="inner cover">
-            <h1 class="cover-heading">Person Count in CSB - Lab Ground Floor</h1>
-              <div class="alert alert-success" role="alert">
-                Current Number of People : <p id ="myCount"> </p>
-              </div>
-              <h1 class="cover-heading">Person Count in CSB - First Floor Lab</h1>
-              <div class="alert alert-success" role="alert"> -->
-              <!-- Below is used when id is Javascript var for passed count, but no connected client, see line 101 -->
-                <!-- Current Number of People : <p id ="myCount2"> </p> -->
-                Current Number of People : 0 
-              </div>
-              <h1 class="cover-heading">Person Count in Students Union - meeting Room 1</h1>
-              <div class="alert alert-success" role="alert"> -->
-              <!-- Below is used when id is Javascript var for passed count, but no connected client, see line 101 -->
-                <!-- Current Number of People : <p id ="myCount3"> </p> -->
-                 Current Number of People : 0
-              </div>
-              <h1 class="cover-heading">Person Count in Students Union - meeting Room 2</h1>
-              <div class="alert alert-success" role="alert"> -->
-              <!-- Below is used when id is Javascript var for passed count, but no connected client, see line 101 -->
-                <!-- Current Number of People : <p id ="myCount4"> </p> -->
-                Current Number of People : 0 
-              </div> 
-              <!-- Below is out of use code that gives an example of reverse functionality, web page controlling Pi Client when button pressed
-              see code at bottom of page and guide 3 -->
-          <!-- <h1 class="cover-heading">PI Button state</h1>
-              <div class="onoffswitch" style="margin:0px auto;">
-                <div class="switch demo3">
-                  <input type="checkbox" id="mybuttonGPIO">
-                  <label><i></i></label>
-                </div>
-              </div> -->
-          </div>
-        </div>
-      </div>
-    </div> 
+<body>
+  <!-- Preloading screen -->
+  <div id="preloader">
+      <div class="loader"></div>
+  </div>
 
-    <!-- Hero/carousel Section Begin -->
-    <!-- <section class="hero-section">
+  <!-- Navigation Bar Start -->
+  <header class="header-section">
+      <div class="container">
+          <div class="logo">
+              <a href="./index.php">
+                  <img src="img/logo2.png" alt="">
+              </a>
+          </div>
+          <div class="nav-menu">
+              <nav class="mainmenu mobile-menu">
+                  <ul>
+                      <li class="active"><a href="./index.php">Home</a></li>
+                      <li><a href="./about.php">About</a></li>
+                      <li><a href="#">Workouts</a>
+                          <ul class="dropdown">
+                              <li><a href="./calisthenics.php">Calisthenics</a></li>
+                              <li><a href="./crossfit.php">Crossfit</a></li>
+                              <li><a href="./bodybuilding.php">BodyBuilding</a></li>
+                          </ul>
+                      </li>
+                      <li><a href="trainer.php">Trainer</a></li>
+                      <li><a href="client.php">Client</a></li>
+                      <li><a href="./Admin/login.php">Login</a></li>
+                  </ul>
+              </nav>
+        
+          </div>
+          <div id="mobile-menu-wrap"></div>
+      </div>
+  </header>
+  <!-- Nav Bar End -->
+
+  <!-- Hero/carousel Section Begin -->
+  <section class="hero-section">
       <div class="hero-items owl-carousel">
           <div class="single-hero-item set-bg" data-setbg="#">
               <div class="container">
@@ -112,74 +109,64 @@
               </div>
           </div>
       </div>
-  </section> -->
+  </section>
   <!-- Hero Section End -->
 
-  <div class="owl-carousel">
-    <div class="container">
-      <h1 class="cover-heading">Person Count in CSB - Lab Ground Floor</h1>
-      <div class="alert alert-success" role="alert">
-        Current Number of People : <p id ="myCount"> </p>
+
+  <!-- Footer Section Begin -->
+  <footer class="footer-section">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-6">
+                  <div class="map-location">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2312.852038465756!2d-5.974364484115035!3d54.571359380254044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486108a0080eec35%3A0x9027d28ca7db7e7d!2s99A%20Stockmans%20Ln%2C%20Belfast%20BT9%207JD!5e0!3m2!1sen!2suk!4v1586364860999!5m2!1sen!2suk" style="border:0;" allowfullscreen=""></iframe>
+
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="footer-form set-bg" data-setbg="img/squat.jpg">
+                      <div class="row">
+                          <div class="col-lg-10">
+                              <div class="section-title">
+                                  <h2>Any Queries? Contact us today!</h2>
+                                  <p>Tomorrow isn't promised, so let us help you with your fitness goals today.</p>
+                              </div>
+                              <form action="#" method='POST' enctype="multipart/form-data">
+                                  <div class="row">
+                                      <div class="col-lg-6">
+                                          <input type="text" placeholder="Name" name="name">
+                                      </div>
+                                      <div class="col-lg-6">
+                                          <input type="text" placeholder="Email" name="email">
+                                      </div>
+                                      <div class="col-lg-12">
+                                          <input type="text" placeholder="Subject" name="subject">
+                                          <textarea placeholder="Message" name="body"></textarea>
+                                          <button type="submitInterest" id="registerInterestBtn" name="registerInterest">Submit</button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-  </div>
-  </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <!-- <script src="owl.carousel.min.js"></script> -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+  </footer>
+  <!-- Footer Section End -->
 
-    <!-- script src="https://cdn.socket.io/socket.io-1.0.4.js"></script> -->
-    <script src="socket.io/socket.io.js"></script>
 
-    <script type="text/javascript">
-    //connect to server Socket.IO 
-    var socket = io.connect('/');
-    //this is what code is reusable for additional clients with unique "titles" and function values
-    socket.on("updatecount", function (count) {
-    	console.log("The count is: " + count); //checks count is received
-	  //js below changes checkbox on html page dynamically as state is send from PI-server-HTML
-    document.getElementById("myCount").innerHTML = count;
-    });
-    //used for ir sensing swipe right to move to next carousel slide
-    socket.on("swiperight", function (data) {
-    	console.log(data); //checks message passed
-      //need code to manipulate carousel slide
+      
 
-    });
-    </script>
 
-  </body>
+  <!-- Js Plugins -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/main.js"></script>
+
+  
+</body>
+
 </html>
-
-<!-- unused DOM manipulation to pass in dB values for building and room title -->
-            <!-- <h1 class="cover-heading">Person Count in <p><script>resultbuild</script></p> - Lab Ground Floor</h1> -->
-            <!-- <h1 class="cover-heading">Person Count in <p id="test"> <form action="/" method="post" name="receiveBuilding">
-             <script> 
-            //  console.log(result);
-             var printz = result.toString();
-            document.getElementById("test").innerHTML = printz;
-            </form></p> - Lab Ground Floor</h1>
-            </script> -->
-
- <!-- checking excess code doesnt cause issues -->
-    <!-- //connect to Server Socket.IO
-    var socket = io.connect('/');
-	//jquery takes changed state of toggle on page and passes state to server
-    // $("#myonoffswitch").change(function(){
-    //   socket.emit("stateChanged", this.checked);
-    // });
-    
-    socket.on("updatecount", function (count) {
-    	console.log("The count is: " + count); //checks count is received
-	//js below changes checkbox on html page dynamically as state is send from PI-server-HTML
-	//document.getElementById("mybuttonGPIO").checked = button;
-    });
-	
-    </script>
-
-  </body>
-</html> -->
