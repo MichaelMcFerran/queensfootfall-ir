@@ -73,4 +73,10 @@ con.on('error', function(err) {
                   });
             });
        });
+
+              //used to take IR gestures
+              socket.on("volup", function(data){ //counter is name of the test clients message, so needs to be unique
+                console.log(data); //see message in server
+                io.emit("swiperight", data); // submits change to listening html client /browser
+           });
     });
