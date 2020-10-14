@@ -56,17 +56,20 @@
                 <h5>CSB- Lab 1</h5>
                 <p>Person Count : </p>
               </div>
+              <div class="alert alert-success" role="alert">
+                Current Number of People : <p id ="myCount"> </p>
+              </div>
           </div>
           <div class="carousel-item">
             <img class="d-block w-100" src="..." alt="Second slide">
             <div class="alert alert-success" role="alert">
-                Current Number of People : <p id ="myCount"> </p>
+                Current Number of People : <p id ="myCount2"> </p>
               </div>
           </div>
           <div class="carousel-item">
             <img class="d-block w-100" src="..." alt="Third slide">
             <div class="alert alert-success" role="alert">
-                Current Number of People : <p id ="myCount"> </p>
+                Current Number of People : <p id ="myCount3"> </p>
               </div>
           </div>
         </div>
@@ -109,9 +112,13 @@
     	console.log(data); //checks message passed
       //need code to manipulate carousel slide
         // Enable Carousel Controls
-        $(".carousel-control-prev").click(function(){
+        $(".carousel-control-prev").click(function(data){
         $("#carouselExampleIndicators").carousel("prev");
-});
+        });
+        // $('#myCarousel').on('slide.bs.carousel', function () {
+        // // do something…
+        
+        // })
     });
     </script>
 
