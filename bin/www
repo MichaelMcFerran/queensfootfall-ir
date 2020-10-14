@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+var debug = require('debug')('server');
+var app = require('../app'); //dependencies and starts up server
+//begin port listening for clients to connect to
+app.set('port', process.env.PORT || 3000); //change from 3000 to work locally to match client
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+    //connection info to database hosted on cleardB with heroku
+    var mysql = require('mysql');
+    //user details to connect to database. Will pass into creating the sql connection
+    var db_param = {
+    host: "eu-cdbr-west-03.cleardb.net",
+    user: "b357da7f3209b9",
+    password: "f1318198",
+    database : 'heroku_58f73cf4b46766d'
+    };
+     //create connection to dB, got help for reconnection from https://github.com/mysqljs/mysql/issues/1478
+//begins connection to dB as pool of connections (CRUCIAL) to allow continuous data inputs asynchronously
+var con = mysql.createPool(db_param);
+
+//- Error listener for any database connection errors
+//-
+con.on('error', function(err) {
+
+    //-
+    //- The server close the connection.
+    //-
+    if(err.code === "PROTOCOL_CONNECTION_LOST"){    
+        console.log("/!\\ Cannot establish a database connection. /!\\ ("+err.code+")");
+        return reconnect(con);
+    }
+  
+    else if(err.code === "PROTOCOL_ENQUEUE_AFTER_QUIT"){
+        console.log("/!\\ Cannot establish a database connection. /!\\ ("+err.code+")");
+        return reconnect(con);
+    }
+  
+    else if(err.code === "PROTOCOL_ENQUEUE_AFTER_FATAL_ERROR"){
+        console.log("/!\\ Cannot establish a database connection. /!\\ ("+err.code+")");
+        return reconnect(con);
+    }
+  
+    else if(err.code === "PROTOCOL_ENQUEUE_HANDSHAKE_TWICE"){
+        console.log("/!\\ Cannot establish a database connection. /!\\ ("+err.code+")");
+    }
+  
+    else{
+        console.log("/!\\ Cannot establish a database connection. /!\\ ("+err.code+")");
+        return reconnect(con);
+    }
+  
+  });
+
+    var io = require("socket.io").listen(server); //gets library and starts server port listening
+    io.on("connection", function(socket){ //starts server socket.io connection
+      console.log("Client Connected"); //output displays when browser and/or client connects
+
+       //count needs to be named for each room specific pi, and is modular so can be scaled up for an amount of Pis
+       socket.on("counter", function(count){ //counter is name of the test clients message, so needs to be unique
+            console.log("Person Count " + count); //see count in server console for testing
+            io.emit("updatecount", count); // submits change to listening html client /browser
+            //update dB only when count is detected
+              con.getConnection(function(err) {
+                  if (err) throw err;  
+                  //RoomId and buildingID values specific to each room and sensor as differentiate between each other in dB
+                  //fixed, string building to include passed count var
+                  var FootfallCSBLab1 = "INSERT INTO FMusers ( RoomID, BuildingID, CurrentFootfall) VALUES (1, 1, " + con.escape(count) + ")";
+
+                  con.query(FootfallCSBLab1, function (err, result, fields) {
+                    if (err) throw err;
+                  });
+            });
+       });
+    });
