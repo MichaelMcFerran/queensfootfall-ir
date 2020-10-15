@@ -110,13 +110,7 @@
     //used for ir sensing swipe right to move to next carousel slide
     socket.on("swiperight", function (data) {
     	console.log(data); //checks message passed
-      //need code to manipulate carousel slide
-        // Enable Carousel Controls
-
-        // $('#myCarousel').on('slide.bs.carousel', function () {
-        // // do something…
-        
-        // })
+      //code to manipulate carousel slide
         $('.carousel').carousel('next')
         });
     </script>
@@ -124,31 +118,3 @@
   </body>
 </html>
 
-<!-- unused DOM manipulation to pass in dB values for building and room title -->
-            <!-- <h1 class="cover-heading">Person Count in <p><script>resultbuild</script></p> - Lab Ground Floor</h1> -->
-            <!-- <h1 class="cover-heading">Person Count in <p id="test"> <form action="/" method="post" name="receiveBuilding">
-             <script> 
-            //  console.log(result);
-             var printz = result.toString();
-            document.getElementById("test").innerHTML = printz;
-            </form></p> - Lab Ground Floor</h1>
-            </script> -->
-
- <!-- checking excess code doesnt cause issues -->
-    <!-- //connect to Server Socket.IO
-    var socket = io.connect('/');
-	//jquery takes changed state of toggle on page and passes state to server
-    // $("#myonoffswitch").change(function(){
-    //   socket.emit("stateChanged", this.checked);
-    // });
-    
-    socket.on("updatecount", function (count) {
-    	console.log("The count is: " + count); //checks count is received
-	//js below changes checkbox on html page dynamically as state is send from PI-server-HTML
-	//document.getElementById("mybuttonGPIO").checked = button;
-    });
-	
-    </script>
-
-  </body>
-</html> -->
